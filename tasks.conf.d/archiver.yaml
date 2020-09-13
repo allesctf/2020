@@ -1,0 +1,10 @@
+name: Archiver
+category: Misc
+difficulty: Easy
+author: "TheVamp"
+description: |
+  Archives exist in many formats. I wonder how many exotic ones exist?
+flag: ALLES{files_in_files_in_files_are_freezing_hell}
+files:
+  - { name: ALLES, sha256sum: 92995d725eaeaac16cae03ec8ab96c9d64d12bee7b048b77ea97ae281095b4c4 }
+enabled: yes

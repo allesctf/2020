@@ -1,0 +1,15 @@
+name: maze
+category: Binary Exploitation
+difficulty: Very Hard
+author: BoredPerson
+description: |
+  Seems like we shipped some weird debug build of our new game.
+  
+  **EDIT:** Adjusted difficulty to `Very Hard`.
+  
+  **EDIT:** Attached ZIP now includes the full Docker setup for this challenge.
+flag: ALLES{Am3ric4n_Fuzzy_L4byr1nth}
+files:
+  - { name: maze.zip, sha256sum: 55020e19472c2b7f01394beae0cbd825480e3adf91c6eb53d545e18713fa6d3a }
+enabled: yes
+broker: 'maze'

@@ -1,0 +1,13 @@
+name: Actual ASLR 2
+category: Binary Exploitation
+difficulty: Medium
+author: LiveOverflow
+description: |
+  Actual Address Space Layout Randomization:
+  
+  Randomness is true freedom... The chains of allocations are GONE!
+flag: ALLES{Well...More_memory_would_make_it_S3CURE!RIGHT?!}
+files:
+  - { name: aaslr.zip, sha256sum: 4d801b9dfe71dd9786ed2c71caae4d5b548ae45fad608afc262a8a3fd7f98240 }
+enabled: yes
+broker: 'aaslr'

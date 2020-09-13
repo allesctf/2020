@@ -1,0 +1,16 @@
+name: Next Generation Payout
+category: Misc
+difficulty: Medium
+author: "D_K, explo1t"
+description: |
+    The future is here! Thanks to our new payment method, you can just scan our fancy image, enter the secret code and instantly receive your payment!!1!1
+    
+    Friendly Haxxor: Boys i don't like this new NGP Banking sh*t, I intercepted network traffic from their old NGP version. Hopefully you could use this to steal all their money REEEEE
+  
+flag: ALLES{🟩🟧🟨🟥🟦⬛🟫🟪⬜}
+enabled: yes
+files:
+  - { name: NGPv1_sniff.zip, sha256sum: d6e72ef2b174e0facab66846f0d1d8db63c2df682940beb12d99f5d46ce74778 }
+broker: 'flickercode'
+brokerProtocol: 'https'
+

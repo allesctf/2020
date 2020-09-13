@@ -1,0 +1,10 @@
+name: NSA Whistleblower
+category: Misc
+difficulty: Easy
+author: "explo1t"
+description: |
+  Psst... The most secret data is hidden in plain sight.
+flag: ALLES{s3cr3t_d0ts}
+files:
+  - { name: NSA_leak.pdf, sha256sum: c3d42b90dc7775bbac3a5a5b6e5fccfcffbc50fef04aa80da4363696e2351256 }
+enabled: yes

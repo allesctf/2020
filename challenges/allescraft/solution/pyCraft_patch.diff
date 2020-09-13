@@ -1,0 +1,204 @@
+diff --git a/minecraft/forge_bungee.py b/minecraft/forge_bungee.py
+new file mode 100644
+index 0000000..56886e0
+--- /dev/null
++++ b/minecraft/forge_bungee.py
+@@ -0,0 +1,139 @@
++import json
++import time
++from .networking.types import VarInt, UnsignedByte, String
++from .networking.connection import Connection, STATE_PLAYING, PlayingReactor, LoginReactor
++from.networking.packets import serverbound, clientbound, PacketBuffer
++
++
++class ForgeBungeeConnection(Connection):
++
++    def __init__(self, options, address, port=25565, auth_token=None, username=None, initial_version=None, allowed_versions=None, handle_exception=None, handle_exit=None):
++        self.launch_options = options
++        super().__init__(address, port=port, auth_token=auth_token, username=username, initial_version=initial_version,
++                         allowed_versions=allowed_versions, handle_exception=handle_exception, handle_exit=handle_exit)
++
++    def _connect(self):
++        super()._connect()
++        if len(self.allowed_proto_versions) == 1:
++            print("hacky Wait fix...")
++            time.sleep(10)
++            print("Done")
++
++    def _handshake(self, next_state=STATE_PLAYING):
++        handshake = serverbound.handshake.HandShakePacket()
++        handshake.protocol_version = self.context.protocol_version
++        proxy_ip = "127.0.0.1" if not self.launch_options.spoofed_ip else self.launch_options.spoofed_ip
++        if self.launch_options.spoofed_uuid:
++            spoofed_uuid = self.launch_options.spoofed_uuid
++        elif self.auth_token:
++            spoofed_uuid = self.auth_token.profile.id_
++        else:
++            spoofed_uuid = "0000000-0000-0000-0000-00000000000"
++        data = [
++            {
++                "name": "forgeClient",
++                "value": "true"
++            },
++            {
++                "name": "extraData",
++                "value": "\u0001FML\u0001",
++                "signature": ""
++            },
++        ]
++        handshake.server_address = self.options.address + "\0" + \
++            proxy_ip+"\0"+spoofed_uuid + "\0"+json.dumps(data)
++        handshake.server_port = self.options.port
++        handshake.next_state = next_state
++        self.write_packet(handshake)
++
++    def connect(self):
++        super().connect()
++        if len(self.allowed_proto_versions) == 1:
++            self.reactor = ForgeLoginReactor(self)
++
++
++class ForgePlayingReactor(PlayingReactor):
++    def react(self, packet):
++        if not isinstance(packet, clientbound.play.PluginMessagePacket):
++            super().react(packet)
++            return
++
++        if packet.channel == "REGISTER":
++            response_data = PacketBuffer()
++            response_data.send(packet.data)
++            response_data.reset_cursor()
++            self.connection.write_packet(serverbound.play.PluginMessagePacket(
++                channel="REGISTER", data=response_data.read()))
++
++            response_data2 = PacketBuffer()
++            UnsignedByte.send(1, response_data2)  # discriminator
++            UnsignedByte.send(2, response_data2)  # fml proto version
++            response_data2.reset_cursor()
++            self.connection.write_packet(serverbound.play.PluginMessagePacket(
++                channel="FML|HS", data=response_data2.read()))
++
++            # Modlist
++            response_data3 = PacketBuffer()
++            UnsignedByte.send(2, response_data3)  # discriminator
++            mods = json.loads("""
++            {"modinfo":{"type":"FML","modList":[{"modid":"minecraft","version":"1.12.2"},{"modid":"mcp","version":"9.42"},{"modid":"FML","version":"8.0.99.99"},{"modid":"forge","version":"14.23.5.2854"},{"modid":"opencomputers|core","version":"1.7.5.192"},{"modid":"opencomputers","version":"1.7.5.192"}]}}
++            """)
++            mods = mods["modinfo"]["modList"]
++            n = len(mods)
++            VarInt.send(len(mods), response_data3)  # number of mods
++            for mod in mods:
++                String.send(mod["modid"], response_data3)
++                String.send(mod["version"], response_data3)
++
++            response_data3.reset_cursor()
++            self.connection.write_packet(serverbound.play.PluginMessagePacket(
++                channel="FML|HS", data=response_data3.read()))
++
++        elif packet.channel == "FML|HS":
++            response_data = PacketBuffer()
++            response_data.send(packet.data)
++            response_data.reset_cursor()
++
++            discr = UnsignedByte.read(response_data)
++            if discr == 2:
++                # got ModList send handshake
++                response_data2 = PacketBuffer()
++                UnsignedByte.send(255, response_data2)  # discriminator
++                UnsignedByte.send(2, response_data2)  # phase WAITINGSERVERDATA
++                response_data2.reset_cursor()
++                self.connection.write_packet(serverbound.play.PluginMessagePacket(
++                    channel="FML|HS", data=response_data2.read()))
++
++            if discr == 3:
++                # got registry data send GOTSERVERDATA
++                response_data2 = PacketBuffer()
++                UnsignedByte.send(255, response_data2)  # discriminator
++                UnsignedByte.send(3, response_data2)  # phase WAITINGSERVERDATA
++                response_data2.reset_cursor()
++                self.connection.write_packet(serverbound.play.PluginMessagePacket(
++                    channel="FML|HS", data=response_data2.read()))
++
++            if discr == 255:
++                # got handshake
++                phase = UnsignedByte.read(response_data)
++                next_phase = 0
++                if phase == 2:
++                    next_phase = 4
++                elif phase == 3:
++                    next_phase = 5
++                response_data2 = PacketBuffer()
++                UnsignedByte.send(255, response_data2)  # discriminator
++                # phase WAITINGSERVERDATA
++                UnsignedByte.send(next_phase, response_data2)
++                response_data2.reset_cursor()
++                self.connection.write_packet(serverbound.play.PluginMessagePacket(
++                    channel="FML|HS", data=response_data2.read()))
++
++
++class ForgeLoginReactor(LoginReactor):
++
++    def react(self, packet):
++        if packet.packet_name == "login success":
++            self.connection.reactor = ForgePlayingReactor(self.connection)
++        else:
++            return super().react(packet)
+diff --git a/start.py b/start.py
+index 353a158..45355b3 100755
+--- a/start.py
++++ b/start.py
+@@ -6,6 +6,7 @@ import re
+ from optparse import OptionParser
+ 
+ from minecraft import authentication
++from minecraft.forge_bungee import ForgeBungeeConnection
+ from minecraft.exceptions import YggdrasilError
+ from minecraft.networking.connection import Connection
+ from minecraft.networking.packets import Packet, clientbound, serverbound
+@@ -36,6 +37,16 @@ def get_options():
+                       action="store_true",
+                       help="include unknown packets in --dump-packets output")
+ 
++    parser.add_option("-f", "--forge", dest="forge",
++                      action="store_true",
++                      help="allows connections to forge servers")
++
++    parser.add_option("--sid", "--spoofed-uuid", dest="spoofed_uuid", default=None,
++                      help="spoofed uuid for bungeecord")
++
++    parser.add_option("--sip", "--spoofed-ip", dest="spoofed_ip", default=None,
++                      help="spoofed ip for bungeecord")
++
+     (options, args) = parser.parse_args()
+ 
+     if not options.username:
+@@ -65,8 +76,12 @@ def main():
+ 
+     if options.offline:
+         print("Connecting in offline mode...")
+-        connection = Connection(
+-            options.address, options.port, username=options.username)
++        if options.forge:
++            connection = ForgeBungeeConnection(
++                options, options.address, options.port, username=options.username)
++        else:
++            connection = Connection(
++                options.address, options.port, username=options.username)
+     else:
+         auth_token = authentication.AuthenticationToken()
+         try:
+@@ -75,8 +90,12 @@ def main():
+             print(e)
+             sys.exit()
+         print("Logged in as %s..." % auth_token.username)
+-        connection = Connection(
+-            options.address, options.port, auth_token=auth_token)
++        if options.forge:
++            connection = ForgeBungeeConnection(options,
++                                               options.address, options.port, username=options.username)
++        else:
++            connection = Connection(
++                options.address, options.port, auth_token=auth_token)
+ 
+     if options.dump_packets:
+         def print_incoming(packet):

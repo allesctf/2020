@@ -1,0 +1,12 @@
+name: Where is my cash
+category: Web
+difficulty: Medium
+author: layton, Managarmr
+description: |
+  I lost access to my wallet and their support team won't give me my access back! Can you help me?
+
+  Website: http://wimc.ctf.allesctf.net/
+flag: "ALLES{th4nks f0r y0uR h31p, my fr13nd!}"
+files:
+  - { name: wimc.zip, sha256sum: 4ee8dc460a10243adabfecded2394fe167ce213935eef641312b1b7e5caf797a }
+enabled: true

@@ -1,0 +1,15 @@
+name: Oldschool IRC
+category: Boomer
+difficulty: Easy
+author: "0x4d5a"
+description: |
+  Yo, I heard you like old-school stuff. In ancient times, there were IRC networks. They were full of great people and helpful bots.
+
+  Check out this IRC server and talk to the OP in `#challenge` (enable TLS in your IRC client!).
+
+  Since the OP is a bot, he is not very talkative. Surely you'll figure out how to communicate with him!
+
+  P.S. For a true 0ldsch00l experience, use an command line IRC client like `irssi` :)
+flag: ALLES{0ld_sch0ol_1rc_was_sooooo0_c00l!4857}
+enabled: yes
+broker: 'oldschool_irc'

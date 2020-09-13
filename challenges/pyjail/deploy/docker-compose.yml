@@ -1,0 +1,22 @@
+---
+version: "2.4"
+
+services:
+  pyjail:
+    hostname: ${INSTANCE}_pyjail
+    runtime: runc
+    privileged: false
+    image: internal-registry.allesctf.net/allesctf20/pyjail
+    networks:
+      ctf:
+        ipv4_address: ${PREFIX}.10
+
+networks:
+  ctf:
+    driver: bridge
+    internal: true
+    external: no
+    ipam:
+      driver: default
+      config:
+        - subnet: ${PREFIX}.0/24

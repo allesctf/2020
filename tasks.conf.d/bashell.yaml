@@ -1,0 +1,15 @@
+name: Bashell
+category: Bash
+difficulty: Medium
+author: localo
+description: |
+  Welcome to **bashell** 😈
+
+  The challenge idea is not new, but this should take it to the next level.
+
+  You may want to take a look at some [prior writeups](https://ctftime.org/task/5150), but consider yourself warned - it's more than copy and paste :-)
+flag: ALLES{Wait, it's only bash? Always has been..}
+enabled: yes
+broker: 'bashell'
+files:
+  - { name: bashell.zip, sha256sum: bb8df98047754dd4f5e9263b5636b4188a9b968d5c15c324d06f5d0568c90f49 }

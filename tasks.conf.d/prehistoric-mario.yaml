@@ -1,0 +1,13 @@
+name: prehistoric mario
+category: Reverse Engineering
+difficulty: Medium
+author: "0x4d5a"
+description: |
+  Fred Flintstone was the real OG. And he played mario, at least thats how I imagine it.
+
+  Anyway, Fred is occupied. Help his dino to trigger the right boxes.
+  Flag is all Caps.
+flag: ALLES{1TS_A_DINO}
+files:
+  - { name: prehistoric-mario.apk, sha256sum: c9f4eddaba06d20fd516bee7bcb3e692f05f55d3c1d551c7e6682e0d453689a4 }
+enabled: yes

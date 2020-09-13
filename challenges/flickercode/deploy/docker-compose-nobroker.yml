@@ -1,0 +1,29 @@
+version: '3.2'
+
+services:
+  flicker_web:
+    build: ./frontend/
+    restart: always
+    ports:
+      - "13371:1024"
+    networks:
+      - external
+      - internal
+
+  flicker_backend:
+    build: ./backend/
+    restart: always
+    ports:
+     - "13372:8000"
+    environment:
+      - FLASK_RUN_PORT=8000
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_APP=app.py
+    networks:
+      - internal
+
+
+networks:
+  external:
+  internal:
+    internal: true

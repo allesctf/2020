@@ -1,0 +1,10 @@
+name: Pyjail ATricks
+category: Misc
+difficulty: Easy
+author: "explo1t"
+description: |
+  Run the secret function you must! Hrrmmm. A flag maybe you will get.
+
+flag: ALLES{3sc4ped_y0u_aR3}
+enabled: yes
+broker: 'pyjail'

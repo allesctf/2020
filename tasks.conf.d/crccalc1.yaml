@@ -1,0 +1,12 @@
+name: crccalc1
+category: Crypto
+difficulty: Easy
+author: Simon+Pinguly
+description: |
+  ![crccalc-12](https://static.allesctf.net/818924eca70abad0d3f85626532e621b7eb62597ed033b0d048d0746068c1b87/crccalc-12.png)
+
+  **Note:** The flag for this challenge is not in the usual `ALLES{.*}` format.
+flag: CrCCheCksout
+files:
+  - { name: crccalc-12.png, sha256sum: 818924eca70abad0d3f85626532e621b7eb62597ed033b0d048d0746068c1b87 }
+enabled: true

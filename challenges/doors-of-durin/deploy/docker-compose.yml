@@ -1,0 +1,32 @@
+---
+version: "2.4"
+
+services:
+  doors_gatekeeper:
+    hostname: ${INSTANCE}_doors_gatekeeper
+    runtime: runc
+    privileged: false
+    image: internal-registry.allesctf.net/allesctf20/doors_gatekeeper
+    networks:
+      ctf:
+        ipv4_address: ${PREFIX}.10
+    links:
+      - "doors_door:doorsofdurin_door"
+  doors_door:
+    hostname: ${INSTANCE}_doors_door
+    runtime: runc
+    privileged: false
+    image: internal-registry.allesctf.net/allesctf20/doors_door
+    networks:
+      ctf:
+        ipv4_address: ${PREFIX}.11
+
+networks:
+  ctf:
+    driver: bridge
+    internal: true
+    external: no
+    ipam:
+      driver: default
+      config:
+        - subnet: ${PREFIX}.0/24

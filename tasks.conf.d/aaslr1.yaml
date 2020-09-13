@@ -1,0 +1,11 @@
+name: Actual ASLR 1
+category: Crypto
+difficulty: Easy
+author: LiveOverflow
+description: |
+  Prove that you can win 0xf times against the house. Then go to Vegas.
+flag: ALLES{ILLEGAL_CARD_COUNTING!_BANNED}
+files:
+  - { name: aaslr.zip, sha256sum: 4d801b9dfe71dd9786ed2c71caae4d5b548ae45fad608afc262a8a3fd7f98240 }
+enabled: yes
+broker: 'aaslr'

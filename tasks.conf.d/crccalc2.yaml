@@ -1,0 +1,10 @@
+name: crccalc2
+category: Crypto
+difficulty: Medium
+author: Simon+Pinguly
+description: |
+  ![crccalc-24](https://static.allesctf.net/d6b5b4c3fe73752485aa987885d5254330a88a081034e7a386229eeece89355b/crccalc-24.png)
+flag: ALLES{cycl1c_r3dund4ncy}
+files:
+  - { name: crccalc-24.png, sha256sum: d6b5b4c3fe73752485aa987885d5254330a88a081034e7a386229eeece89355b }
+enabled: true

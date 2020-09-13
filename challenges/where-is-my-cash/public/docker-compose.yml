@@ -1,0 +1,80 @@
+version: '3'
+services:
+  maria:
+    build:
+      context: ./maria
+    hostname: hax1_wimc_maria
+    environment:
+      - MYSQL_ROOT_PASSWORD=DUMMY
+      - "FLAG=ALLES{s4mpl3_fl4g}"
+    privileged: false
+    networks:
+      - ctf
+    resources:
+        limits:
+          cpus: '0.5'
+          memory: 50M
+          kernel-memory: 70M
+          pids_limit: 100
+
+  api:
+    build:
+      context: ./api
+    hostname: wimc_api
+    depends_on:
+      - maria
+    ports:
+      - "127.0.0.1:10001:1337"
+    privileged: false
+    environment:
+      - MYSQL_HOST=maria
+    networks:
+      - ctf
+    resources:
+        limits:
+          cpus: '0.5'
+          memory: 50M
+          kernel-memory: 70M
+          pids_limit: 100
+
+  app:
+    build:
+      context: ./app
+    hostname: wimc_app
+    depends_on:
+      - api
+    ports:
+      - "127.0.0.1:10002:1337"
+    privileged: false
+    networks:
+      - ctf
+    resources:
+        limits:
+          cpus: '0.5'
+          memory: 50M
+          kernel-memory: 70M
+          pids_limit: 100
+
+  admin:
+    build:
+      context: ./admin
+    hostname: wimc_admin
+    depends_on:
+      - maria
+    ports:
+      - "127.0.0.1:10003:1337"
+    privileged: false
+    environment:
+      - MYSQL_HOST=maria
+    networks:
+      - ctf
+    resources:
+        limits:
+          cpus: '1'
+          memory: 2G
+          kernel-memory: 2.5G
+          pids_limit: 100  
+
+networks:
+  ctf:
+    driver: bridge

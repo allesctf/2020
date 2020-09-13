@@ -1,0 +1,35 @@
+---
+version: "2.4"
+
+services:
+  flicker_web:
+    hostname: ${INSTANCE}_flicker_web
+    runtime: runc
+    privileged: false
+    image: internal-registry.allesctf.net/allesctf20/flicker_web
+    networks:
+      ctf:
+        ipv4_address: ${PREFIX}.10
+  flicker_backend:
+    hostname: ${INSTANCE}_flicker_web
+    runtime: runc
+    privileged: false
+    image: internal-registry.allesctf.net/allesctf20/flicker_backend
+    environment:
+      - FLASK_RUN_PORT=8000
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_APP=app.py
+    networks:
+      ctf:
+        ipv4_address: ${PREFIX}.11
+
+networks:
+  ctf:
+    driver: bridge
+    internal: true
+    external: no
+    ipam:
+      driver: default
+      config:
+        - subnet: ${PREFIX}.0/24
+

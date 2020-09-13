@@ -1,0 +1,8 @@
+name: push
+category: Web
+difficulty: Easy
+author: Flo
+description: |
+  [https://push.ctf.allesctf.net](https://push.ctf.allesctf.net)
+flag: ALLES{http2_push_dashdash_force}
+enabled: yes

@@ -1,0 +1,13 @@
+diff --git a/src/Session.cc b/src/Session.cc
+index 695c44fc..ca45b799 100644
+--- a/src/Session.cc
++++ b/src/Session.cc
+@@ -508,7 +508,7 @@ KernelMapping Session::create_shared_mmap(
+ 
+   /* Remove the fs name so that we don't have to worry about
+    * cleaning up this segment in error conditions. */
+-  unlink(path);
++  // unlink(path);
+ 
+   ScopedFd shmem_fd = remote.retrieve_fd(child_shmem_fd);
+   resize_shmem_segment(shmem_fd, size);

@@ -1,0 +1,10 @@
+name: Flag Service Revolution
+category: Reverse Engineering
+difficulty: Medium
+author: "TheVamp, 0x4d5a"
+description: |
+  Welcome to our great Flag{Service_Revolution}
+flag: ALLES{Wii_love_to_enter_great_flags}
+files:
+  - { name: flag_service_revolution.7z, sha256sum: 4815458a156336c3ea5d94e8fdc820e1849e82cd7275b6812efe3c0709949dcd }
+enabled: yes

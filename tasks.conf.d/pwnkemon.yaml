@@ -1,0 +1,12 @@
+name: PWNkemon
+category: Hardware
+difficulty: Easy
+author: LiveOverflow
+description: |
+  The picture should explain everything.
+
+  Careful, flag format is in a different format: `CSCG(...)`
+flag: CSCG(GONNA-hack-em-All-PWNkemon!!!)
+files:
+  - { name: pwnkemon.zip, sha256sum: 775035a8f7ec3773dd92e335bb8593e2ed9fb0df0a578240080945e2e0764b98 }
+enabled: yes

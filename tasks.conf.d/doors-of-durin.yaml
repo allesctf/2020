@@ -1,0 +1,12 @@
+name: Doors of Durin
+category: Crypto
+difficulty: Easy
+author: "0x4d5a"
+description: |
+  Can you pass the guard who watches over the Doors of Durin?
+flag: ALLES{st0p_us1ng_md5_alr34dy_BabyRage_1836d}
+files:
+  - { name: door.c, sha256sum: 50c4cbd19b814d0952e6a7e059fbb843d64d90a6899e16c54fed9c3f54883fa4 }
+  - { name: gatekeeper.py, sha256sum: 5b0ef07a4fefca7b2409a8683510a967777ba8352fb29305dbf002b172febd94 }
+enabled: yes
+broker: 'doors-of-durin'

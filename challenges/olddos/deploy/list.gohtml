@@ -1,0 +1,15 @@
+<html>
+<body>
+<form action="/show" method="get">
+    Path:
+    <input type="text" name="path" />
+    <input type="submit" value="show" />
+    <br>
+</form>
+<ul>
+    {{range $index, $val := .}}
+        <li>{{$val.Name}}</li>
+    {{end}}
+</ul>
+</body>
+</html>

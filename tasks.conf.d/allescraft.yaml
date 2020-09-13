@@ -1,0 +1,14 @@
+name: ALLES!Craft
+category: Game Pwn
+difficulty: Hard
+author: localo, Managarmr
+description: |
+  JOIN MY NEW COOL MINECRAFT SERVER, PLS NO HAX :)
+
+  Domain: `allescraft.ctf.allesctf.net`
+  
+  Port: `25565` (default)
+flag: ALLES{w3b_ch4113ng3_in_di5gui53!}
+files:
+  - { name: allescraft.zip, sha256sum: 9dd616eb425cb430dbd248415c432f34f49b7d0aa47604a2555b665d0c8f8d48 }
+enabled: true

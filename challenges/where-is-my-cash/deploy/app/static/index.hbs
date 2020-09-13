@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        const API_TOKEN = "{{{ token }}}";
+    </script>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/index.css">
+        <title>
+            SecureCash™ | Home
+        </title>
+    </head>
+    <body onload="loadReviews()">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
+            <a class="navbar-brand">SecureCash™</a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" onclick="loadPage('home')">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="loadPage('wallets')">Wallets</a>
+                </li>
+                <li>
+                    <a class="nav-link" onclick="loadPage('support')">Support</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <a class="nav-link form-inline my-2 my-lg-0" id="login" onclick="loadPage('login')">Login</a>
+                <a class="nav-link form-inline my-2 my-lg-0" id="register" onclick="loadPage('register')">Register</a>
+            </ul>
+        </nav>
+
+        <div id="page">
+            <h1 class="banner">A Modern And Secure Way To Manage Money</h1>
+
+            <div class="card description rounded justify-content-center">
+                <img src="./img/ceo.jpg" class="ceo">
+                <h5 class="description-text">
+                    Welcome,<br><br>
+                    We at SecureCash™ truly care about the security and privacy of our customers while also ensuring the best results.<br> <br>
+                    If you have any questions or issues, let one of our admins know at the Support Page.
+                    <br><br>
+                    Hugo Richards,<br>
+                    CEO at SecureCash™
+                </h5>
+            </div>
+
+            <div class="card reviews rounded justify-content-center">
+                <h5 class="card-header">Reviews</h5>
+                <div class="card-body" id="reviews"></div>
+            </div>
+        </div>
+
+        <script src="/js/jquery-3.5.1.slim.min.js"></script>
+        <script src="/js/popper.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/canvasjs.min.js"></script>
+        <script src='/js/index.js'></script>
+    </body>
+</html>

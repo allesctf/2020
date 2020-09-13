@@ -1,0 +1,12 @@
+name: Socketcand[y] 1
+category: Hardware
+difficulty: easy
+author: "explo1t"
+description: |
+    You found an open port on ze interwebs, but it looks like an ancient protocol. Maybe you can figure out how to interact with it?
+    
+    P.S. I remember hearing about secrets like vcan0 and vcan1 before.
+  
+flag: ALLES{c4n_sn1ffer}
+enabled: true
+broker: 'socketcandy'

@@ -1,0 +1,10 @@
+name: olddos
+category: Boomer
+difficulty: Easy
+author: "nopinjector"
+description: |
+  Running obsolete technology is awesome :D
+flag: ALLES{legacy_FS_are_pr3tty_sc4ry}
+enabled: yes
+broker: 'olddos'
+brokerProtocol: 'https'

@@ -1,0 +1,11 @@
+name: graph
+category: Binary Exploitation
+difficulty: Medium
+author: BoredPerson
+description: |
+  A small fun program to divide your graphs into islands.
+flag: ALLES{Graaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaphs}
+files:
+  - { name: graph.zip, sha256sum: c0408d05f8e8db3eeafb39fa9aae2d61a8e24f629086a268aaf42b41e8b0a29a }
+enabled: yes
+broker: 'graph'

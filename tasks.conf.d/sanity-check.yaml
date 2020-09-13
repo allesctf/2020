@@ -1,0 +1,10 @@
+name: Sanity Check
+category: Boomer
+difficulty: Baby
+author: "explo1t"
+description: |
+    USE IRC!
+    
+    `irc://irc.hackint.org/#allesctf`
+flag: ALLES{0k_b00m3r}
+enabled: yes

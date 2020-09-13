@@ -1,0 +1,14 @@
+name: shebang
+category: Bash
+difficulty: Easy
+author: "nopinjector"
+description: |
+  Shebang provides us with nice kernel-supported execution functionality since 1980.
+
+flag: ALLES{reusing_filedescriptors_saves_resources}
+files:
+  - { name: shebang.py, sha256sum: 838654dd90f556614cbdd20ecd21f6dbc9116cfd7e9fd536d7d1a15658f521f2 }
+  - { name: Dockerfile, sha256sum: 889e005c181c319267a2225f31f3e7a7636b19be187cd9ee334f90c6ea125514 }
+  - { name: ynetd,      sha256sum: 481a6381e16a7e177c54533537cb63a3b48e500f6f39dea7cc9dd3e42cdb22cb }
+enabled: yes
+broker: 'shebang'

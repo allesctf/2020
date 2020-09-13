@@ -1,0 +1,17 @@
+name: ESPecially a lot of fun
+category: Hardware
+difficulty: Hard
+author: "0x4d5a"
+description: |
+  Our investigation team found a strange device in a network.
+  They got a firmware dump right before they were detected, and in the last second, they managed to send it out to us.
+
+  We need to know more and have to exploit the remote service, but we can't bypass the login.
+  
+  Please be gentle with the ESPs, they are real devices and won't survive that much traffic. No scanning, no dirbusting and no bruteforce!
+
+  Server: `https://esp.ctf.allesctf.net/`
+flag: ALLES{Iot_bingo_SQL_injection_and_s3curity_thr0ugh_obscurity}
+files:
+  - { name: flash.bin, sha256sum: c7cd7e9fa5576f67ba428a724cacdbf471737d0750b9d56d3f63070a3b42e5e9 }
+enabled: yes

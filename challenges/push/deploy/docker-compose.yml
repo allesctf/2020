@@ -1,0 +1,13 @@
+version: '3'
+services:
+  nginx: 
+    image: nginx:latest
+    container_name: push
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./html:/var/www/html
+      - ./certs:/etc/nginx/certs
+      - ./flag:/var/www/html/flag_3a51b14e2e408ad9ae23d5f1e59f22147c5fc336d7874a7b06905c60cc629bab.txt
+    ports:
+      - 80:80
+      - 443:443

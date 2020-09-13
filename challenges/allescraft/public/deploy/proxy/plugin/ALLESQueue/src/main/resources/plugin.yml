@@ -1,0 +1,4 @@
+name: ALLESQueue
+main: net.allesctf.allescraft.queue.ALLESQueue
+version: 1.0
+author: ALLES

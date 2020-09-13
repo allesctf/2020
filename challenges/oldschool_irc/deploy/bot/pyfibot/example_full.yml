@@ -1,0 +1,148 @@
+# Nickname for bot
+nick: botnick
+
+# List of admin hostmasks
+admins:
+  - root!root@localhost
+
+# Set the command character for the bot
+cmdchar: '.'
+
+# Set realname for the bot
+realname: 'https://github.com/lepinkainen/pyfibot'
+
+# Networks to connect to
+networks:
+  # Alias for network
+  nerv:
+    # Server to connect to
+    server: irc.nerv.fi
+    # We use a different nick on this network
+    nick: botnick_nerv
+    # As well as different realname
+    realname: 'pyfibot'
+    # List of channels to join
+    channels:
+      - pyfibot
+      # Channel with password
+      - [pyfibot_test, password]
+      # Channel name starting with '!'
+      - '!pyfibot_example'
+    # Port to connect to
+    # default: 6667
+    port: 6667
+    # Set minimum delay between lines sent to the server. For values under 
+    # a second, float can be used.
+    # default: 0.5 (2 lines per second)
+    linerate: 0.5
+    # Use SSL encryption when connecting to server
+    # default: false
+    is_ssl: false
+    # Forces IPv6 to be used. Connection will fail, if IPv6 is unavailable.
+    # default: false
+    force_ipv6: false
+  # Another network
+  localhost:
+    server: localhost
+    channels:
+      - pyfibot
+    # Set server password
+    password: 'kikkeliskokkelis'
+    # Note:
+    # If network alias is "quakenet", and authname and authpass are set,
+    # the bot will try to authenticate to Q (no mather what authservice 
+    # etc says)
+
+    # Authentication service
+    # default: none
+    authservice: NickServ
+    # Username used in authentication
+    # default: none
+    authname: pyfibot
+    # Authentication password
+    # default: none
+    authpass: vErY5tr0ngP4$$wrd
+    # Command used in authentication, can use %(authname)s and %(authpass)s
+    # default: IDENTIFY %(authname)s %(authpass)s
+    authcommand: IDENTIFY %(authname)s %(authpass)s
+    # Delay on joining channels after authentication finished in seconds
+    # default: 0
+    authdelay: 5
+
+logging:
+  # Use debug level in logging
+  # default: false
+  debug: false
+
+module_urltitle:
+  # Uses Levenshtein distance to calculate if title is already in url. 
+  # If it is, disables output.
+  # default: true
+  check_redundant: true
+  # List of channels where module_urltitle is disabled
+  # default: none
+  disable: ''
+  # List of ignored urls
+  # default: none
+  ignore_urls:
+    - 'http*://*example.com/annoying_title/*'
+  # List of users whose links are ignored
+  # default: none
+  ignore_users:
+    - 'rss-bot!rss-bot@example.com'
+  # Application ID for eBay handler
+  # default: RikuLind-3b6d-4c30-937c-6e7d87b5d8be (appid for pyfibot)
+  ebay_appid: RikuLind-3b6d-4c30-937c-6e7d87b5d8be
+  # Site ID for eBay handler
+  # https://developer.ebay.com/DevZone/merchandising/docs/Concepts/SiteIDToGlobalID.html
+  # default: 77 (Germany, for euros)
+  ebay_siteid: 77
+  # Currency sign to display with eBay handler
+  # default: 'e'
+  ebay_currency: 'e'
+  # Twitter bearer token. Required for tweet fetching.
+  # To obtain a token, first create a Twitter application at 
+  # https://dev.twitter.com/apps and generate token with
+  # pyfibot/util/twitter_application_auth.py
+  twitter_bearer: ''
+  # YLE Areena API information.
+  # If for some reason you don't want to use the default,
+  # you can get one from http://developer.yle.fi
+  areena:
+    app_id: 'cd556936'
+    app_key: '25a08bbaa8101cca1bf0d1879bb13012'
+
+module_openweather:
+  # Application ID for OpenWeatherMap, required for use
+  # http://openweathermap.org/api
+  appid: ''
+  # Location to show when no arguments are provided
+  # default: Helsinki
+  default_location: Helsinki
+  # Freshness threshold for weather data, shows measurement time
+  # if observation is older than this
+  # default: 120
+  threshold: 120
+
+module_fmi:
+  # Key to FMI weather API
+  # default: c86a0cb3-e0bf-4604-bfe9-de3ca92e0afc (pyfibot apikey)
+  api_key: c86a0cb3-e0bf-4604-bfe9-de3ca92e0afc
+  # Location to show when no arguments are provided
+  # default: Helsinki
+  default_place: Helsinki
+
+module_wolfram_alpha:
+  # Application ID for Wolfram Alpha. Required to use the module.
+  # See http://products.wolframalpha.com/api/documentation.html#1
+  # default: None
+  appid: ''
+
+module_posti:
+  # Language selection for posti
+  language: en
+
+module_spotify:
+  # Client ID and Client Secret from https://beta.developer.spotify.com/dashboard/applications
+  client_id: "ASDF"
+  client_secret: "QWERTY"

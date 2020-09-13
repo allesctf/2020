@@ -1,0 +1,1 @@
+gcc brute_rand.c -o brute_rand

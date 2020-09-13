@@ -1,0 +1,10 @@
+name: Pyjail Escape
+category: Misc
+difficulty: Easy
+author: "explo1t"
+description: |
+  Python leave you must, to be master real!
+
+flag: ALLES{th1s_w4s_a_r34l_3sc4pe}
+enabled: yes
+broker: 'pyjail'

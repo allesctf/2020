@@ -1,0 +1,11 @@
+name: nullptr
+category: Binary Exploitation
+difficulty: Medium/Hard
+author: Flo
+description: |
+  Welcome to the House Of _I'm pretty sure this is not even a heap challenge_.
+flag: ALLES{thank_u_ASLR,but_glibc_is_the_real_mvp}
+files:
+  - { name: nullptr.zip, sha256sum: d74dcd7033502679623abc5c15666791f4faeae11245dafa02d4c5617e3a6dcd }
+enabled: yes
+broker: 'nullptr'

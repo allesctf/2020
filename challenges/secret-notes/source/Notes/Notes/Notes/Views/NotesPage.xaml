@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:viewModels="clr-namespace:Notes.ViewModels;assembly=Notes"
+             BindingContext="{Binding Source={x:Static viewModels:DesignTimeViewModelLocator.NotesPageViewModel}}"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Notes.Views.NotesPage"
+             Title="{Binding Title}">
+
+    <StackLayout>
+        <ListView HorizontalOptions="CenterAndExpand"
+                  VerticalOptions="StartAndExpand"
+                  CachingStrategy="RecycleElement"
+                  HasUnevenRows="True"
+                  SelectionMode="None"
+                  ItemsSource="{Binding NotesBindings}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <AbsoluteLayout Padding="15,10,15,10">
+                            <AbsoluteLayout AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                                            AbsoluteLayout.LayoutBounds="0,0,1,50">
+                                <Entry Text="{Binding Title}"
+                                       Placeholder="Title"
+                                       AbsoluteLayout.LayoutFlags="All"
+                                       AbsoluteLayout.LayoutBounds="0,0,0.7,1">
+                                    <Entry.Behaviors>
+                                        <prism:EventToCommandBehavior EventName="TextChanged"
+                                                                      Command="{Binding TextChangedCommand}"/>
+                                    </Entry.Behaviors>
+                                </Entry>
+                                <Button Text="Remove"
+                                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                                        AbsoluteLayout.LayoutBounds="1,0,100,50"
+                                        Command="{Binding RemoveCommand}" />
+                            </AbsoluteLayout>
+                            <Editor
+                                Text="{Binding Content}"
+                                Placeholder="Input Note here"
+                                HeightRequest="200"
+                                Margin="0,50,0,0"
+                                AbsoluteLayout.LayoutFlags="All"
+                                AbsoluteLayout.LayoutBounds="0,1,1,1">
+                                <Editor.Behaviors>
+                                    <prism:EventToCommandBehavior EventName="TextChanged"
+                                                                  Command="{Binding TextChangedCommand}"/>
+                                </Editor.Behaviors>
+                            </Editor>
+                        </AbsoluteLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <Button Text="Add Note"
+                        Command="{Binding NewNoteCommand}"/>
+            </ListView.Footer>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

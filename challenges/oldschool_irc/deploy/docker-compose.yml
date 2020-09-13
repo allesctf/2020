@@ -1,0 +1,41 @@
+---
+version: "2.4"
+services:
+  irdc:
+    hostname: ${INSTANCE}_oldschool_irc
+    image: internal-registry.allesctf.net/allesctf20/oldschool_irc
+    environment:
+      INSP_NET_NAME: OldschoolServer
+      INSP_NET_SUFFIX: .cscg
+      INSP_SERVER_NAME: OldschoolIrc.cscg
+      #INSP_OPER_NAME: BottyMcBotface
+      INSP_OPER_PASSWORD_HASH: Yi8Cy7KFwYmZrFSAjHrOcwW9M0yO2Xv6FqiBpNWslAk\$k6E3w3251SjWrquG4jOcmNnrmUtPZpv3Joz3NBOHuA0 # not used, but oper wont work otheriwse => shitty setup
+      INSP_OPER_SSLONLY: "no"
+      INSP_ADMIN_NAME: BottyMcBotface
+
+    restart: on-failure
+    networks:
+      ctf:
+        ipv4_address: ${PREFIX}.10
+
+  bot:
+    hostname: ${INSTANCE}_oldschool_bot
+    image: internal-registry.allesctf.net/allesctf20/oldschool_bot
+    links:
+      - "irdc:ircserver"
+
+    restart: on-failure
+    networks:
+      ctf:
+        ipv4_address: ${PREFIX}.11
+
+networks:
+  ctf:
+    driver: bridge
+    internal: true
+    external: no
+    ipam:
+      driver: default
+      config:
+        - subnet: ${PREFIX}.0/24
+

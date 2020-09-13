@@ -1,0 +1,2 @@
+execute:
+solution/solve.py echo '$(</flag)' | ./run.sh

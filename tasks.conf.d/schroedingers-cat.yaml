@@ -1,0 +1,9 @@
+name: "Schrödinger's Cat"
+category: Binary Exploitation
+difficulty: Medium
+author: bennofs
+description: |
+  Did the cat get the flag? You won't know unless you observe it.
+flag: ALLES{sm4rt_c4ts_d0nt_u53_rr_1n_pr0d}
+enabled: true
+broker: 'schroedingers_cat'

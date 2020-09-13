@@ -1,0 +1,37 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Cookie: [!!python/unicode DXGlobalization=lang=en&locale=en-US&currency=EUR]
+      User-Agent: ['Mozilla/5.0 (Windows NT 6.1; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0']
+    method: GET
+    uri: http://www.dx.com/bi/GetSKUInfo?sku=151659
+  response:
+    body: {string: "{\"success\":true,\"products\":[{\"sku\":151659,\"headLine\":\"\",\"shortHeadline\":\"Wireless
+        Bluetooth Audio Music R...\",\"rewriteUrl\":\"http://www.dx.com/p/wireless-bluetooth-audio-music-receiver-adapter-black-151659\",\"imageUrl\":\"//img.dxcdn.com/productimages/sku_151659_1_small.jpg\",\"listPrice\":\"\u20AC26.20\",\"price\":\"\u20AC14.54\",\"avgRating\":4,\"reviewCount\":25,\"isDeliveryTag\":false,\"category\":\"Bluetooth
+        &amp; IrDA\",\"categoryUrl\":\"http://www.dx.com/c/bluetooth-irda-304\",\"reviewUrl\":\"//club.dx.com/reviews/text/151659\",\"innerTag\":\"tag_mvp\",\"discountInfo\":\"\\u003cb\\u003e44%\\u003c/b\\u003e
+        OFF\",\"clearanceTip\":\"\"}]}"}
+    headers:
+      cache-control: [private]
+      connection: [keep-alive]
+      content-length: ['597']
+      content-type: [application/json; charset=utf-8]
+      date: ['Wed, 09 Mar 2016 21:48:23 GMT']
+      server: [nginx/1.8.1]
+      set-cookie: ['ASP.NET_SessionId=kjiid41i503hsuxii4ysl3rj; domain=.dx.com; expires=Thu,
+          24-Mar-2016 21:48:23 GMT; path=/; HttpOnly', 'ASP.NET_SessionId=kjiid41i503hsuxii4ysl3rj;
+          domain=.dx.com; expires=Thu, 24-Mar-2016 21:48:23 GMT; path=/; HttpOnly',
+        'DXGlobalization_lang=en; domain=.dx.com; expires=Thu, 24-Mar-2016 21:48:23
+          GMT; path=/', 'DXGlobalization_locale=en-US; domain=.dx.com; expires=Thu,
+          24-Mar-2016 21:48:23 GMT; path=/', 'DXGlobalization_currency=EUR; domain=.dx.com;
+          expires=Thu, 24-Mar-2016 21:48:23 GMT; path=/', sessionCookie=73b639ab-5c79-4a5f-8ced-5411277e1469;
+          domain=.dx.com; path=/]
+      x-aspnet-version: [4.0.30319]
+      x-aspnetmvc-version: ['4.0']
+      x-powered-by: [ASP.NET]
+      x-upstream: [16-196]
+    status: {code: 200, message: OK}
+version: 1

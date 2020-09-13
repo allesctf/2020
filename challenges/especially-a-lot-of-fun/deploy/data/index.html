@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="src/jquery-3.5.1.slim.min.js"></script>
+    <script src="src/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="src/bootstrap.min.css" />
+
+    <script src="src/custom.js"></script>
+  </head>
+
+  <body>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">ESPecially a lot of fun</h1>
+        <p class="lead">
+          Ever wanted to have a Web/Hardware challenge? If yes, awesome! If not,
+          shame. You have to solve it anyway
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <p>
+        Sample Credentials:
+        <span class="text-monospace">JohnDoe : john123</span>
+      </p>
+      <form action="login" method="POST">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <select
+            class="form-control"
+            name="username"
+            id="username"
+            onchange="updateChecksum(this.value)"
+          >
+            <option>JohnDoe</option>
+            <option>???</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            id="password"
+            placeholder="Password"
+          />
+        </div>
+        <input id="checksum" name="checksum" type="hidden" value="3a9d0a" />
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

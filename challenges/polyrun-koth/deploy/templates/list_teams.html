@@ -1,0 +1,6 @@
+<!doctype html>
+<title>Check Status for Teams</title>
+<h1>Team Results:</h1>
+{% for item in data %}
+<p> <a href="/check_status?teamID={{ item }}">{{ item }}</a> </p>
+{% endfor %}

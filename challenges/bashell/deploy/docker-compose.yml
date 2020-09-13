@@ -1,0 +1,26 @@
+---
+version: "2.4"
+
+services:
+  bashell:
+    hostname: bashell
+    restart: always
+    image: internal-registry.allesctf.net/allesctf20/bashell
+    runtime: kataprivileged
+    privileged: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    networks:
+      ctf:
+        ipv4_address: ${PREFIX}.10
+
+networks:
+  ctf:
+    driver: bridge
+    internal: true
+    external: no
+    ipam:
+      driver: default
+      config:
+        - subnet: ${PREFIX}.0/24

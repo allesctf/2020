@@ -1,0 +1,10 @@
+name: Socketcand[y] 2
+category: Hardware
+difficulty: easy
+author: "explo1t"
+description: |
+    Did you find what you were looking for? Maybe you could interact a little with the rabbit hole behind it and find more of the good stuff.
+  
+flag: ALLES{c4n_sc4n3r}
+enabled: true
+broker: 'socketcandy'

@@ -1,0 +1,11 @@
+nick: BottyMcBotface
+
+admins:
+  - ''
+
+cmdchar: '.'
+
+networks:
+  nerv:
+    server: ircserver
+    port: 1024

@@ -1,0 +1,22 @@
+---
+version: "2.4"
+
+services:
+  schroedingers_cat:
+    hostname: ${INSTANCE}_schroedingers_cat
+    runtime: kata
+    privileged: false
+    image: internal-registry.allesctf.net/allesctf20/schroedingers_cat
+    networks:
+      ctf:
+        ipv4_address: ${PREFIX}.10
+
+networks:
+  ctf:
+    driver: bridge
+    internal: true
+    external: no
+    ipam:
+      driver: default
+      config:
+        - subnet: ${PREFIX}.0/24
